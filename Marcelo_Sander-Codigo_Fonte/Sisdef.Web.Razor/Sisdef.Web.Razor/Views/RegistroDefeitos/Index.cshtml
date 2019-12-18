@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Sisdef.Web.Razor.Domains.RegistroDefeito>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data
+            </th>
+            <th>
+                Equipamento
+            </th>
+            <th>
+                Tipo defeito
+            </th>
+            <th>
+                Hora de inicio
+            </th>
+            <th>
+                Hora final
+            </th>
+            <th>Tempo Parado</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataProblema)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipamento.TipoEquipamento.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Defeito.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraFinal)
+            </td>
+            <td>
+                @Html.Raw(item.HoraFinal - item.HoraInicio)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

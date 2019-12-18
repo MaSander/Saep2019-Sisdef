@@ -1,0 +1,50 @@
+﻿@model Sisdef.Web.Razor.Domains.RegistroDefeito
+
+@{
+    ViewData["Title"] = "Create";
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            @if (ViewBag.Mensagem != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Html.Raw(ViewBag.Mensagem)
+                </div>
+            }
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataProblema" class="control-label"></label>
+                <input asp-for="DataProblema" class="form-control" type="date" />
+                <span asp-validation-for="DataProblema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EquipamentoId" class="control-label"></label>
+                <select asp-for="EquipamentoId" class="form-control" asp-items="ViewBag.EquipamentoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DefeitoId" class="control-label"></label>
+                <select asp-for="DefeitoId" class="form-control" asp-items="ViewBag.DefeitoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoraInicio" class="control-label"></label>
+                <input asp-for="HoraInicio" class="form-control" type="time" />
+                <span asp-validation-for="HoraInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HoraFinal" class="control-label"></label>
+                <input asp-for="HoraFinal" class="form-control" type="time" />
+                <span asp-validation-for="HoraFinal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cadastro" class="btn btn-default" />
+            </div>
+            <a asp-area="" asp-controller="RegistroDefeitoS" asp-action="Create" class="btn bg-primary">Limpar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
